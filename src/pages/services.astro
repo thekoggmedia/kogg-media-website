@@ -1,0 +1,352 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    id: "brand-identity",
+    num: "01",
+    title: "Brand Identity, Strategy & Messaging",
+    desc: "We define how your brand looks, sounds, and positions itself so it is understood immediately and recognised on every return encounter. From the first impression to the lasting echo — we build identities that resonate.",
+    deliverables: ["Logo & brand mark design", "Brand guidelines & visual systems", "Brand strategy & positioning", "Messaging framework", "Brand refresh & rebranding", "Brand audits & consulting"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+  },
+  {
+    id: "graphic-design",
+    num: "02",
+    title: "Graphic Design & Visual Systems",
+    desc: "We build consistent visual languages that strengthen familiarity, trust, and brand recall across every platform and format. Design that communicates clearly at first glance and resonates through repeated exposure.",
+    deliverables: ["Social media graphics", "Flyers, posters & banners", "Business & corporate materials", "Digital ad creatives", "Brand templates & systems", "Promotional creatives"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>`,
+  },
+  {
+    id: "motion",
+    num: "03",
+    title: "Motion Graphics & Animated Visuals",
+    desc: "Motion that reinforces meaning and embeds your message deeper into memory through rhythm, movement, and flow. Turning attention into retention — one frame at a time.",
+    deliverables: ["Animated social media content", "Logo animations", "Promo & explainer animations", "Static-to-motion transformations", "Animated brand content", "Motion design systems"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+  },
+  {
+    id: "video",
+    num: "04",
+    title: "Video Content Creation & Editing",
+    desc: "We produce and refine video content that tells your story clearly, emotionally, and with the precision to travel across every platform. From brand films to short-form content — every frame counts.",
+    deliverables: ["Brand videos & promos", "Short-form content (Reels, Shorts, TikTok)", "Video editing & post-production", "Content repurposing & optimisation", "Visual narrative development", "Testimonial & interview videos"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="m22 8-5 4 5 4V8z"/></svg>`,
+  },
+  {
+    id: "photography",
+    num: "05",
+    title: "Photography & Visual Content Capture",
+    desc: "Authentic imagery that humanises brands and strengthens audience familiarity through every visual encounter. We capture moments that reinforce brand presence.",
+    deliverables: ["Brand & product photography", "Event photography", "Corporate & lifestyle shoots", "Creative direction for photo sessions", "Photo editing & retouching", "Visual content libraries"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+  },
+  {
+    id: "events",
+    num: "06",
+    title: "Live Events & Livestreaming",
+    desc: "We design, produce, and broadcast live experiences that extend far beyond the moment — creating impressions that continue to resonate. Every live experience is an opportunity for the Second Hearing.",
+    deliverables: ["Live event coverage & production", "Multi-camera livestreaming", "Virtual & hybrid event production", "Event visuals & broadcast coordination", "On-site technical management", "Post-event highlight reels"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>`,
+  },
+  {
+    id: "social",
+    num: "07",
+    title: "Social Media Content & Campaign Execution",
+    desc: "Content crafted to cut through noise and remain present — not just in timelines, but in the minds of the audience. We help brands be heard twice on social platforms.",
+    deliverables: ["Branded content creation", "Campaign design & execution", "Content series development", "Engagement-driven visuals", "Platform-specific content strategy", "Content calendar management"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+  },
+  {
+    id: "web",
+    num: "08",
+    title: "Web Design & Web Development",
+    desc: "Digital experiences built to welcome visitors, guide them through the brand world, and invite return engagement. We build digital spaces that resonate.",
+    deliverables: ["Website design (UI/UX)", "Website development", "Brand-aligned landing pages", "Portfolio & business websites", "E-commerce solutions", "Website maintenance & updates"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  },
+  {
+    id: "ai",
+    num: "09",
+    title: "AI Agents, Automation & Smart Brand Systems",
+    desc: "Intelligent systems that extend your brand voice consistently and continuously — even when you are offline. We build the future of brand interaction.",
+    deliverables: ["Custom AI agent development", "AI chatbots for brands & businesses", "Workflow automation", "AI-powered brand assistants", "Smart content systems", "AI integration consulting"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7"/><path d="M8 7h8"/><circle cx="12" cy="4" r="2"/><path d="M7 16h.01M12 16h.01M17 16h.01"/></svg>`,
+  },
+  {
+    id: "education",
+    num: "10",
+    title: "Education, Training & Creative Empowerment",
+    desc: "We equip individuals and organisations with creative skills and design thinking that multiply long-term impact. Raising creators, not just content.",
+    deliverables: ["Graphic design masterclasses", "Canva & design tools training", "Visual branding workshops", "Creative skill development programs", "Corporate creative training", "The Creative Jumpstart Masterclass"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+  },
+  {
+    id: "custom",
+    num: "11",
+    title: "Custom Creative Solutions",
+    desc: "When your objective demands more than a template, we design tailor-made creative solutions built for impact without limits. Every great brand deserves its own echo.",
+    deliverables: ["End-to-end creative direction", "Campaign-specific builds", "Special project consulting", "Cross-service bundled solutions", "Retainer creative partnerships", "Bespoke brand activations"],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  },
+];
+---
+
+<Layout title="Services — KOGG MEDIA">
+
+  <!-- Hero -->
+  <section class="services-hero">
+    <div class="services-hero-bg"></div>
+    <div class="container">
+      <span class="section-tag">What We Do</span>
+      <h1 class="services-hero-title">Our Services</h1>
+      <p class="services-hero-sub">
+        11 service areas. One philosophy. Every deliverable engineered
+        to create the Second Hearing for your brand.
+      </p>
+      <a href="/contact" class="btn-primary">
+        Start a Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Services List -->
+  <section class="services-list">
+    <div class="container">
+      {services.map((service, i) => (
+        <div class="service-row" id={service.id}>
+          <div class="service-row-left">
+            <div class="service-row-icon" set:html={service.icon} />
+            <span class="service-row-num">{service.num}</span>
+          </div>
+          <div class="service-row-content">
+            <h2 class="service-row-title">{service.title}</h2>
+            <p class="service-row-desc">{service.desc}</p>
+            <div class="service-deliverables">
+              <p class="deliverables-label">What's included:</p>
+              <ul class="deliverables-list">
+                {service.deliverables.map(item => (
+                  <li class="deliverable-item">
+                    <span class="deliverable-dot"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a href="/contact" class="service-cta-link">
+              Enquire about this service
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="services-bottom-cta">
+    <div class="container">
+      <div class="services-cta-inner">
+        <h2 class="services-cta-title">Not sure which service you need?</h2>
+        <p class="services-cta-sub">Tell us about your brand challenge and we'll recommend the right approach.</p>
+        <div class="services-cta-btns">
+          <a href="/contact" class="btn-primary">Talk to Us</a>
+          <a href="https://wa.me/2348139200352" target="_blank" rel="noopener" class="btn-outline">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .services-hero {
+    background: #0A1628;
+    padding: 10rem 1.5rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,180,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,180,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .services-hero .container { position: relative; z-index: 2; }
+
+  .services-hero-title {
+    font-family: 'Exo 2', 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.05;
+  }
+
+  .services-hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .services-list {
+    padding: 5rem 1.5rem;
+    background: #ffffff;
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 3rem;
+    padding: 3.5rem 0;
+    border-bottom: 1px solid #E2E8F0;
+    transition: all 0.3s ease;
+  }
+
+  .service-row:first-child { padding-top: 1rem; }
+  .service-row:last-child { border-bottom: none; }
+
+  .service-row:hover .service-row-icon {
+    color: #00B4B4;
+  }
+
+  .service-row-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.25rem;
+  }
+
+  .service-row-icon {
+    color: #CBD5E0;
+    transition: color 0.3s ease;
+  }
+
+  .service-row-num {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #CBD5E0;
+    letter-spacing: 0.1em;
+  }
+
+  .service-row-content {}
+
+  .service-row-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0A1628;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .service-row-desc {
+    font-size: 1rem;
+    color: #4A5568;
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-deliverables {
+    background: #F8FAFB;
+    border: 1px solid #E2E8F0;
+    border-left: 3px solid #00B4B4;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .deliverables-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #00B4B4;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+  }
+
+  .deliverables-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem 2rem;
+  }
+
+  .deliverable-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: #4A5568;
+  }
+
+  .deliverable-dot {
+    width: 5px;
+    height: 5px;
+    background: #00B4B4;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .service-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #00B4B4;
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .service-cta-link:hover { gap: 0.7rem; color: #007A7A; }
+
+  .services-bottom-cta {
+    background: #0A1628;
+    padding: 6rem 1.5rem;
+    text-align: center;
+  }
+
+  .services-cta-inner { max-width: 580px; margin: 0 auto; }
+
+  .services-cta-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+  }
+
+  .services-cta-sub {
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .services-cta-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .service-row { grid-template-columns: 1fr; gap: 1rem; }
+    .service-row-left { flex-direction: row; justify-content: flex-start; }
+    .deliverables-list { grid-template-columns: 1fr; }
+  }
+</style>
