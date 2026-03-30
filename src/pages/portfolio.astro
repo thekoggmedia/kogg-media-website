@@ -1,0 +1,416 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Portfolio — KOGG MEDIA">
+
+  <section class="port-hero">
+    <div class="port-hero-bg"></div>
+    <div class="container">
+      <span class="section-tag">Our Work</span>
+      <h1 class="port-hero-title">Portfolio</h1>
+      <p class="port-hero-sub">
+        Work that doesn't just get noticed — work that echoes.
+        Every project is a Second Hearing in the making.
+      </p>
+      <div class="port-hero-btns">
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="btn-primary">
+          View Full Portfolio on Behance
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="https://wa.me/2348139200352" target="_blank" rel="noopener" class="btn-secondary">
+          Request a Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="port-filter-bar">
+    <div class="container">
+      <div class="port-filters">
+        <button class="port-filter active" data-filter="all">All Work</button>
+        <button class="port-filter" data-filter="branding">Branding</button>
+        <button class="port-filter" data-filter="motion">Motion</button>
+        <button class="port-filter" data-filter="web">Web</button>
+        <button class="port-filter" data-filter="video">Video</button>
+        <button class="port-filter" data-filter="social">Social</button>
+        <button class="port-filter" data-filter="events">Events</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Behance Embed Section -->
+  <section class="port-behance">
+    <div class="container">
+      <div class="behance-live-strip">
+        <div class="behance-live-left">
+          <div class="behance-live-dot"></div>
+          <div>
+            <p class="behance-live-title">Live Portfolio — behance.net/thekoggmedia</p>
+            <p class="behance-live-sub">All our latest projects are published on Behance. Click below to explore.</p>
+          </div>
+        </div>
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="btn-primary">Open Behance</a>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="port-grid" id="portfolio-grid">
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="port-card" data-category="branding">
+          <div class="port-card-visual" style="background: linear-gradient(135deg, #0A1628 0%, #007A7A 100%);">
+            <div class="port-card-pattern"></div>
+            <div class="port-card-icon">◎</div>
+          </div>
+          <div class="port-card-info">
+            <span class="port-card-cat">Branding</span>
+            <h3 class="port-card-title">Brand Identity System</h3>
+            <p class="port-card-desc">Complete visual identity — logo, guidelines, and brand system.</p>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="port-card" data-category="motion">
+          <div class="port-card-visual" style="background: linear-gradient(135deg, #007A7A 0%, #00D4D4 100%);">
+            <div class="port-card-pattern"></div>
+            <div class="port-card-icon">▶</div>
+          </div>
+          <div class="port-card-info">
+            <span class="port-card-cat">Motion</span>
+            <h3 class="port-card-title">Motion Graphics Reel</h3>
+            <p class="port-card-desc">Animated brand content and motion design showcase.</p>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="port-card" data-category="web">
+          <div class="port-card-visual" style="background: linear-gradient(135deg, #0D2040 0%, #00B4B4 100%);">
+            <div class="port-card-pattern"></div>
+            <div class="port-card-icon">⬡</div>
+          </div>
+          <div class="port-card-info">
+            <span class="port-card-cat">Web</span>
+            <h3 class="port-card-title">Web Design & Development</h3>
+            <p class="port-card-desc">Digital experiences built for engagement and brand resonance.</p>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="port-card" data-category="social">
+          <div class="port-card-visual" style="background: linear-gradient(135deg, #00B4B4 0%, #0A1628 100%);">
+            <div class="port-card-pattern"></div>
+            <div class="port-card-icon">◈</div>
+          </div>
+          <div class="port-card-info">
+            <span class="port-card-cat">Social Media</span>
+            <h3 class="port-card-title">Campaign Design Series</h3>
+            <p class="port-card-desc">Social content systems and campaign visual design.</p>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="port-card" data-category="video">
+          <div class="port-card-visual" style="background: linear-gradient(135deg, #007A7A 0%, #0A1628 100%);">
+            <div class="port-card-pattern"></div>
+            <div class="port-card-icon">⬤</div>
+          </div>
+          <div class="port-card-info">
+            <span class="port-card-cat">Video</span>
+            <h3 class="port-card-title">Video Production & Editing</h3>
+            <p class="port-card-desc">Brand films, promos, and short-form video content.</p>
+          </div>
+        </a>
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="port-card" data-category="events">
+          <div class="port-card-visual" style="background: linear-gradient(135deg, #0D2040 0%, #007A7A 100%);">
+            <div class="port-card-pattern"></div>
+            <div class="port-card-icon">◉</div>
+          </div>
+          <div class="port-card-info">
+            <span class="port-card-cat">Events</span>
+            <h3 class="port-card-title">Live Event Production</h3>
+            <p class="port-card-desc">Live experience design, coverage, and livestream production.</p>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="port-load-more">
+        <p class="port-load-text">See all projects including case studies, process breakdowns, and client work</p>
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="btn-outline">
+          View All on Behance
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="port-cta">
+    <div class="container">
+      <div class="port-cta-inner">
+        <h2>Have a project in mind?</h2>
+        <p>Let's create something that resonates. Start the conversation.</p>
+        <div class="port-cta-btns">
+          <a href="/contact" class="btn-primary">Start a Project</a>
+          <a href="https://wa.me/2348139200352" target="_blank" rel="noopener" class="btn-secondary">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .port-hero {
+    background: #0A1628;
+    padding: 10rem 1.5rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .port-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,180,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,180,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .port-hero .container { position: relative; z-index: 2; }
+
+  .port-hero-title {
+    font-family: 'Exo 2', 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.05;
+  }
+
+  .port-hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .port-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .port-filter-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 1rem 1.5rem;
+    position: sticky;
+    top: 72px;
+    z-index: 100;
+  }
+
+  .port-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .port-filter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #4A5568;
+    background: #F8FAFB;
+    border: 1px solid #E2E8F0;
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .port-filter:hover { border-color: #00B4B4; color: #00B4B4; }
+  .port-filter.active { background: #00B4B4; color: #ffffff; border-color: #00B4B4; }
+
+  .port-behance { padding: 4rem 1.5rem; background: #F8FAFB; }
+
+  .behance-live-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-left: 4px solid #00B4B4;
+    border-radius: 8px;
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .behance-live-left { display: flex; align-items: center; gap: 1rem; }
+
+  .behance-live-dot {
+    width: 10px;
+    height: 10px;
+    background: #00B4B4;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: livePulse 2s infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,180,180,0.4); }
+    50%       { box-shadow: 0 0 0 6px rgba(0,180,180,0); }
+  }
+
+  .behance-live-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0A1628;
+    margin-bottom: 0.15rem;
+  }
+
+  .behance-live-sub { font-size: 0.82rem; color: #94A3B8; }
+
+  .port-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .port-card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid #E2E8F0;
+    transition: all 0.3s ease;
+  }
+
+  .port-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,180,180,0.12);
+    border-color: #00B4B4;
+  }
+
+  .port-card-visual {
+    height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .port-card-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 25px 25px;
+  }
+
+  .port-card-icon {
+    font-size: 3rem;
+    color: rgba(255,255,255,0.3);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .port-card:hover .port-card-icon {
+    color: rgba(255,255,255,0.7);
+    transform: scale(1.1);
+  }
+
+  .port-card-info { padding: 1.5rem; }
+
+  .port-card-cat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #00B4B4;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .port-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0A1628;
+    margin: 0 0 0.4rem;
+    line-height: 1.3;
+  }
+
+  .port-card-desc {
+    font-size: 0.84rem;
+    color: #4A5568;
+    line-height: 1.6;
+  }
+
+  .port-load-more {
+    text-align: center;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .port-load-text { font-size: 0.88rem; color: #94A3B8; }
+
+  .port-cta {
+    background: #0A1628;
+    padding: 6rem 1.5rem;
+    text-align: center;
+  }
+
+  .port-cta-inner { max-width: 540px; margin: 0 auto; }
+
+  .port-cta-inner h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+  }
+
+  .port-cta-inner p {
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .port-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) { .port-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) {
+    .port-grid { grid-template-columns: 1fr; }
+    .behance-live-strip { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<script>
+  const filters = document.querySelectorAll('.port-filter');
+  const cards = document.querySelectorAll('.port-card');
+
+  filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      filters.forEach(f => f.classList.remove('active'));
+      filter.classList.add('active');
+
+      const selected = filter.getAttribute('data-filter');
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (selected === 'all' || category === selected) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

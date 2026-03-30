@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  { id: "VIDEO_ID_1", title: "KOGG MEDIA Brand Showreel", category: "Showreel", featured: true },
+  { id: "VIDEO_ID_2", title: "Creative Campaign Breakdown", category: "Behind the Scenes", featured: false },
+  { id: "VIDEO_ID_3", title: "Motion Graphics Reel", category: "Motion Design", featured: false },
+  { id: "VIDEO_ID_4", title: "Event Production Highlights", category: "Live Events", featured: false },
+  { id: "VIDEO_ID_5", title: "Brand Identity Process", category: "Branding", featured: false },
+  { id: "VIDEO_ID_6", title: "Client Testimonial", category: "Testimonials", featured: false },
+];
+---
+
+<Layout title="Showcase — KOGG MEDIA">
+
+  <section class="showcase-hero">
+    <div class="showcase-hero-bg"></div>
+    <div class="container">
+      <span class="section-tag">Video Showcase</span>
+      <h1 class="showcase-hero-title">Watch Our Work</h1>
+      <p class="showcase-hero-sub">
+        Stories told through motion, sound, and vision.
+        Every frame crafted for the Second Hearing.
+      </p>
+      <a href="https://www.youtube.com/@thekoggmedia" target="_blank" rel="noopener" class="yt-subscribe-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000" stroke="none"/></svg>
+        Subscribe on YouTube · @thekoggmedia
+      </a>
+    </div>
+  </section>
+
+  <section class="showcase-main">
+    <div class="container">
+
+      <div class="showcase-grid">
+        {videos.map((video, i) => (
+          <div class={`showcase-card ${video.featured ? 'showcase-card--featured' : ''}`}>
+            <div class="showcase-embed">
+              {video.id.startsWith('VIDEO_ID') ? (
+                <a href="https://www.youtube.com/@thekoggmedia" target="_blank" rel="noopener" class="showcase-placeholder">
+                  <div class="showcase-play-btn">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  </div>
+                  <p class="showcase-placeholder-text">{video.title}</p>
+                  <p class="showcase-placeholder-sub">Watch on YouTube</p>
+                </a>
+              ) : (
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1`}
+                  title={video.title}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                />
+              )}
+            </div>
+            <div class="showcase-info">
+              <span class="showcase-cat">{video.category}</span>
+              <p class="showcase-title">{video.title}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="showcase-yt-cta">
+        <div class="showcase-yt-inner">
+          <div class="yt-icon-wrap">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="#FF0000"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg>
+          </div>
+          <div>
+            <p class="yt-cta-title">More videos on our YouTube channel</p>
+            <p class="yt-cta-sub">youtube.com/@thekoggmedia</p>
+          </div>
+          <a href="https://www.youtube.com/@thekoggmedia" target="_blank" rel="noopener" class="yt-channel-cta-btn">
+            Visit Channel
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .showcase-hero {
+    background: #0A1628;
+    padding: 10rem 1.5rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .showcase-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,180,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,180,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .showcase-hero .container { position: relative; z-index: 2; }
+
+  .showcase-hero-title {
+    font-family: 'Exo 2', 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.05;
+  }
+
+  .showcase-hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .yt-subscribe-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255,0,0,0.15);
+    border: 1px solid rgba(255,0,0,0.3);
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .yt-subscribe-btn:hover {
+    background: #FF0000;
+    border-color: #FF0000;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .showcase-main {
+    padding: 5rem 1.5rem;
+    background: #0A1628;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .showcase-card--featured { grid-column: span 2; }
+
+  .showcase-card { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .showcase-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #0D2040;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,180,180,0.15);
+  }
+
+  .showcase-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .showcase-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .showcase-placeholder:hover { background: rgba(0,0,0,0.4); }
+
+  .showcase-play-btn {
+    width: 60px;
+    height: 60px;
+    background: #FF0000;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(255,0,0,0.4);
+    transition: transform 0.3s ease;
+  }
+
+  .showcase-placeholder:hover .showcase-play-btn { transform: scale(1.1); }
+
+  .showcase-placeholder-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .showcase-placeholder-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .showcase-info { padding: 0 0.25rem; }
+
+  .showcase-cat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #00B4B4;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .showcase-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+
+  .showcase-yt-cta {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+  }
+
+  .showcase-yt-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .showcase-yt-inner > div:nth-child(2) { flex: 1; }
+
+  .yt-cta-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.15rem;
+  }
+
+  .yt-cta-sub { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+
+  .yt-channel-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.5rem;
+    background: #FF0000;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .yt-channel-cta-btn:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+
+  @media (max-width: 900px) {
+    .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+    .showcase-card--featured { grid-column: span 2; }
+  }
+
+  @media (max-width: 600px) {
+    .showcase-grid { grid-template-columns: 1fr; }
+    .showcase-card--featured { grid-column: span 1; }
+  }
+</style>

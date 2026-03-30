@@ -1,0 +1,493 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  {
+    slug: "facilitating-the-second-hearing",
+    title: "What Does It Mean to Facilitate the Second Hearing?",
+    excerpt: "Most brands fight for attention. We engineer resonance. Here's the philosophy behind KOGG MEDIA's approach to brand communication in 2026.",
+    category: "Brand Philosophy",
+    date: "March 2026",
+    readTime: "5 min read",
+    featured: true,
+  },
+  {
+    slug: "why-your-brand-needs-ai-agents",
+    title: "Why Your Brand Needs an AI Agent in 2026",
+    excerpt: "AI agents are no longer a novelty — they're operational infrastructure. Here's how KOGG MEDIA builds intelligent brand systems.",
+    category: "AI & Technology",
+    date: "March 2026",
+    readTime: "4 min read",
+    featured: false,
+  },
+  {
+    slug: "design-that-echoes",
+    title: "Design That Echoes: Building Visual Systems That Stick",
+    excerpt: "Great design isn't just about looking good at first sight. It's about being remembered. We break down how we build visual systems for recall.",
+    category: "Design Thinking",
+    date: "February 2026",
+    readTime: "6 min read",
+    featured: false,
+  },
+  {
+    slug: "canva-masterclass-launch",
+    title: "Announcing the Creative Jumpstart Masterclass",
+    excerpt: "KOGG MEDIA's flagship design education program is here. Two days. Canva. Practical skills. Real transformation.",
+    category: "Education",
+    date: "February 2026",
+    readTime: "3 min read",
+    featured: false,
+  },
+  {
+    slug: "live-events-in-2026",
+    title: "Why Live Events Are the Most Powerful Brand Tool in 2026",
+    excerpt: "In a world of digital saturation, live experiences cut through. Here's how we approach event production for maximum resonance.",
+    category: "Live Events",
+    date: "January 2026",
+    readTime: "5 min read",
+    featured: false,
+  },
+];
+
+const categories = ["All", "Brand Philosophy", "Design Thinking", "AI & Technology", "Education", "Live Events", "Case Studies"];
+---
+
+<Layout title="Updates — KOGG MEDIA">
+
+  <section class="updates-hero">
+    <div class="updates-hero-bg"></div>
+    <div class="container">
+      <span class="section-tag">Updates & Insights</span>
+      <h1 class="updates-hero-title">From the Studio</h1>
+      <p class="updates-hero-sub">
+        Brand thinking, creative insights, and updates from KOGG MEDIA.
+        Ideas engineered to echo.
+      </p>
+    </div>
+  </section>
+
+  <section class="updates-main">
+    <div class="container">
+
+      <!-- Category filters -->
+      <div class="updates-filters">
+        {categories.map((cat, i) => (
+          <button class={`updates-filter ${i === 0 ? 'active' : ''}`} data-cat={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Featured Post -->
+      {posts.filter(p => p.featured).map(post => (
+        <div class="updates-featured">
+          <div class="updates-featured-visual">
+            <div class="updates-featured-bg"></div>
+            <span class="updates-featured-icon">◎</span>
+          </div>
+          <div class="updates-featured-content">
+            <div class="updates-featured-meta">
+              <span class="post-category">{post.category}</span>
+              <span class="post-dot">·</span>
+              <span class="post-meta">{post.date}</span>
+              <span class="post-dot">·</span>
+              <span class="post-meta">{post.readTime}</span>
+            </div>
+            <h2 class="updates-featured-title">{post.title}</h2>
+            <p class="updates-featured-excerpt">{post.excerpt}</p>
+            <span class="post-read-link">
+              Read Article
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+      ))}
+
+      <!-- Posts Grid -->
+      <div class="updates-grid">
+        {posts.filter(p => !p.featured).map(post => (
+          <article class="post-card" data-category={post.category}>
+            <div class="post-card-visual">
+              <div class="post-visual-bg"></div>
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="post-category">{post.category}</span>
+                <span class="post-dot">·</span>
+                <span class="post-meta">{post.readTime}</span>
+              </div>
+              <h3 class="post-card-title">{post.title}</h3>
+              <p class="post-card-excerpt">{post.excerpt}</p>
+              <div class="post-card-footer">
+                <span class="post-date">{post.date}</span>
+                <span class="post-read-link">
+                  Read
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="updates-newsletter">
+        <div class="updates-newsletter-inner">
+          <div>
+            <h3 class="newsletter-title">Get insights in your inbox</h3>
+            <p class="newsletter-sub">Brand thinking and creative updates from KOGG MEDIA. No spam — only resonance.</p>
+          </div>
+          <form class="updates-newsletter-form" id="updates-newsletter">
+            <input type="email" placeholder="your@email.com" class="updates-newsletter-input" required />
+            <button type="submit" class="btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .updates-hero {
+    background: #0A1628;
+    padding: 10rem 1.5rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .updates-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,180,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,180,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .updates-hero .container { position: relative; z-index: 2; }
+
+  .updates-hero-title {
+    font-family: 'Exo 2', 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.05;
+  }
+
+  .updates-hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.8;
+  }
+
+  .updates-main {
+    padding: 4rem 1.5rem 6rem;
+    background: #F8FAFB;
+  }
+
+  .updates-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .updates-filter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #4A5568;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .updates-filter:hover { border-color: #00B4B4; color: #00B4B4; }
+  .updates-filter.active { background: #00B4B4; color: #ffffff; border-color: #00B4B4; }
+
+  .updates-featured {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .updates-featured:hover {
+    border-color: #00B4B4;
+    box-shadow: 0 20px 40px rgba(0,180,180,0.1);
+  }
+
+  .updates-featured-visual {
+    background: linear-gradient(135deg, #0A1628 0%, #007A7A 100%);
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .updates-featured-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .updates-featured-icon {
+    font-size: 5rem;
+    color: rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 2;
+  }
+
+  .updates-featured-content {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .updates-featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .post-category {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #00B4B4;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: rgba(0,180,180,0.08);
+    border: 1px solid rgba(0,180,180,0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  .post-dot { color: #CBD5E0; font-size: 0.8rem; }
+
+  .post-meta {
+    font-size: 0.8rem;
+    color: #94A3B8;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .updates-featured-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0A1628;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .updates-featured-excerpt {
+    font-size: 0.95rem;
+    color: #4A5568;
+    line-height: 1.8;
+  }
+
+  .post-read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #00B4B4;
+    cursor: pointer;
+    transition: gap 0.3s ease;
+  }
+
+  .post-read-link:hover { gap: 0.7rem; }
+
+  .updates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .post-card {
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .post-card:hover {
+    border-color: #00B4B4;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,180,180,0.1);
+  }
+
+  .post-card-visual {
+    height: 160px;
+    background: linear-gradient(135deg, #0A1628 0%, #00B4B4 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .post-visual-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .post-card-body { padding: 1.5rem; }
+
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .post-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0A1628;
+    margin: 0 0 0.5rem;
+    line-height: 1.4;
+  }
+
+  .post-card-excerpt {
+    font-size: 0.85rem;
+    color: #4A5568;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 0.75rem;
+  }
+
+  .post-date {
+    font-size: 0.78rem;
+    color: #94A3B8;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .updates-newsletter {
+    background: #0A1628;
+    border-radius: 12px;
+    padding: 3rem;
+  }
+
+  .updates-newsletter-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+  }
+
+  .newsletter-sub {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .updates-newsletter-form {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .updates-newsletter-input {
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    width: 260px;
+    transition: border-color 0.3s ease;
+  }
+
+  .updates-newsletter-input:focus { border-color: #00B4B4; }
+  .updates-newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 900px) {
+    .updates-featured { grid-template-columns: 1fr; }
+    .updates-featured-visual { min-height: 200px; }
+    .updates-grid { grid-template-columns: repeat(2, 1fr); }
+    .updates-newsletter-inner { flex-direction: column; align-items: flex-start; }
+    .updates-newsletter-input { width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .updates-grid { grid-template-columns: 1fr; }
+    .updates-newsletter { padding: 2rem 1.5rem; }
+  }
+</style>
+
+<script>
+  const filters = document.querySelectorAll('.updates-filter');
+  const cards = document.querySelectorAll('.post-card');
+
+  filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      filters.forEach(f => f.classList.remove('active'));
+      filter.classList.add('active');
+      const selected = filter.getAttribute('data-cat');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        (card as HTMLElement).style.display =
+          (selected === 'All' || cat === selected) ? 'block' : 'none';
+      });
+    });
+  });
+
+  const newsletterForm = document.getElementById('updates-newsletter') as HTMLFormElement;
+  newsletterForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = newsletterForm.querySelector('button') as HTMLButtonElement;
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = '#007A7A';
+    newsletterForm.reset();
+  });
+</script>
