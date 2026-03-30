@@ -1,0 +1,238 @@
+---
+// ServicesPreview.astro
+const services = [
+  {
+    num: "01",
+    title: "Brand Identity, Strategy & Messaging",
+    desc: "We define how your brand looks, sounds, and positions itself so it is understood immediately and recognised on every return encounter.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+    href: "/services#brand-identity",
+  },
+  {
+    num: "02",
+    title: "Graphic Design & Visual Systems",
+    desc: "We build consistent visual languages that strengthen familiarity, trust, and brand recall across every platform.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>`,
+    href: "/services#graphic-design",
+  },
+  {
+    num: "03",
+    title: "Motion Graphics & Animated Visuals",
+    desc: "Motion that reinforces meaning and embeds your message deeper into memory through rhythm, movement, and flow.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+    href: "/services#motion",
+  },
+  {
+    num: "04",
+    title: "Video Content Creation & Editing",
+    desc: "We produce and refine video content that tells your story clearly, emotionally, and with the precision to travel across every platform.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="m22 8-5 4 5 4V8z"/></svg>`,
+    href: "/services#video",
+  },
+  {
+    num: "05",
+    title: "Photography & Visual Content Capture",
+    desc: "Authentic imagery that humanises brands and strengthens audience familiarity through every visual encounter.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+    href: "/services#photography",
+  },
+  {
+    num: "06",
+    title: "Live Events & Livestreaming",
+    desc: "We design, produce, and broadcast live experiences that extend far beyond the moment — creating impressions that continue to resonate.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>`,
+    href: "/services#events",
+  },
+  {
+    num: "07",
+    title: "Social Media Content & Campaigns",
+    desc: "Content crafted to cut through noise and remain present — not just in timelines, but in the minds of the audience.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+    href: "/services#social",
+  },
+  {
+    num: "08",
+    title: "Web Design & Web Development",
+    desc: "Digital experiences built to welcome visitors, guide them through the brand world, and invite return engagement.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    href: "/services#web",
+  },
+  {
+    num: "09",
+    title: "AI Agents, Automation & Smart Brand Systems",
+    desc: "Intelligent systems that extend your brand voice consistently and continuously — even when you are offline.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7"/><path d="M8 7h8"/><circle cx="12" cy="4" r="2"/><path d="M7 16h.01M12 16h.01M17 16h.01"/></svg>`,
+    href: "/services#ai",
+  },
+  {
+    num: "10",
+    title: "Education, Training & Creative Empowerment",
+    desc: "We equip individuals and organisations with creative skills and design thinking that multiply long-term impact.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+    href: "/services#education",
+  },
+  {
+    num: "11",
+    title: "Custom Creative Solutions",
+    desc: "When your objective demands more than a template, we design tailor-made solutions built for impact without limits.",
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    href: "/services#custom",
+  },
+];
+---
+
+<section class="services-section section" id="services">
+  <div class="container">
+
+    <div class="services-header">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">
+        11 service areas. One philosophy. Every deliverable engineered
+        to create the Second Hearing for your brand.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <a href={service.href} class="service-card">
+          <div class="service-num">{service.num}</div>
+          <div class="service-icon" set:html={service.icon} />
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-desc">{service.desc}</p>
+          <div class="service-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="services-cta">
+      <a href="/services" class="btn-outline">
+        View All Services
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background: #ffffff;
+    padding: 7rem 1.5rem;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .services-header .section-subtitle {
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: #00B4B4;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,180,180,0.03) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover {
+    border-color: #00B4B4;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,180,180,0.1);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover::after  { opacity: 1; }
+
+  .service-num {
+    font-family: 'Exo 2', 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #00B4B4;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+  }
+
+  .service-icon {
+    color: #00B4B4;
+    margin-bottom: 0.25rem;
+  }
+
+  .service-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0A1628;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: #4A5568;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .service-arrow {
+    color: #00B4B4;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+    align-self: flex-end;
+  }
+
+  .service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .services-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

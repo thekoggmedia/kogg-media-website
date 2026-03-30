@@ -1,0 +1,254 @@
+---
+// YoutubeShowcase.astro
+
+const videos = [
+  {
+    id: "VIDEO_ID_1",
+    title: "KOGG MEDIA — Brand Showreel",
+    category: "Showreel",
+  },
+  {
+    id: "VIDEO_ID_2",
+    title: "Creative Campaign Breakdown",
+    category: "Behind the Scenes",
+  },
+  {
+    id: "VIDEO_ID_3",
+    title: "Motion Graphics Reel",
+    category: "Motion Design",
+  },
+];
+---
+
+<section class="youtube-section section dark-section" id="showcase">
+  <div class="container">
+
+    <div class="youtube-header">
+      <span class="section-tag">Video Showcase</span>
+      <h2 class="section-title" style="color: #ffffff;">
+        Watch Our Work
+      </h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.55);">
+        Stories told through motion, sound, and vision.
+        Every frame crafted for the Second Hearing.
+      </p>
+    </div>
+
+    <div class="youtube-grid">
+      {videos.map((video, i) => (
+        <div class={`youtube-card ${i === 0 ? 'youtube-card--featured' : ''}`}>
+          <div class="youtube-embed">
+            {video.id !== "VIDEO_ID_1" && video.id !== "VIDEO_ID_2" && video.id !== "VIDEO_ID_3" ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1`}
+                title={video.title}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+              />
+            ) : (
+              <div class="youtube-placeholder">
+                {/* ✅ FIXED LINK */}
+                <a
+                  href="https://www.youtube.com/@thekoggmedia"
+                  target="_blank"
+                  rel="noopener"
+                  class="yt-placeholder-inner"
+                >
+                  <div class="yt-play-btn">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                      <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                  </div>
+                  <p class="yt-placeholder-text">Watch on YouTube</p>
+                  <p class="yt-placeholder-sub">@thekoggmedia</p>
+                </a>
+              </div>
+            )}
+          </div>
+
+          <div class="youtube-info">
+            <span class="youtube-category">{video.category}</span>
+            <p class="youtube-title">{video.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="youtube-cta">
+      {/* ✅ FIXED CTA BUTTON */}
+      <a
+        href="https://www.youtube.com/@thekoggmedia"
+        target="_blank"
+        rel="noopener"
+        class="yt-channel-btn"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0A1628"/>
+        </svg>
+        Subscribe to our YouTube Channel
+      </a>
+
+      <p class="yt-handle">@thekoggmedia</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .youtube-section {
+    background: #0A1628;
+    padding: 7rem 1.5rem;
+  }
+
+  .youtube-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .youtube-header .section-subtitle {
+    margin: 0 auto;
+  }
+
+  .youtube-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .youtube-card--featured {
+    grid-column: span 2;
+  }
+
+  .youtube-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .youtube-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #0D2040;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,180,180,0.15);
+  }
+
+  .youtube-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .youtube-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .yt-placeholder-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .yt-placeholder-inner:hover { transform: scale(1.05); }
+
+  .yt-play-btn {
+    width: 64px;
+    height: 64px;
+    background: #FF0000;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 8px 30px rgba(255,0,0,0.3);
+  }
+
+  .yt-placeholder-inner:hover .yt-play-btn { background: #cc0000; }
+
+  .yt-placeholder-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .yt-placeholder-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .youtube-info { padding: 0 0.25rem; }
+
+  .youtube-category {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #00B4B4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .youtube-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-top: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .youtube-cta {
+    text-align: center;
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .yt-channel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: #FF0000;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .yt-channel-btn:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,0,0,0.3);
+    color: #ffffff;
+  }
+
+  .yt-handle {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  @media (max-width: 768px) {
+    .youtube-grid { grid-template-columns: 1fr; }
+    .youtube-card--featured { grid-column: span 1; }
+  }
+</style>

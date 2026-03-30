@@ -1,0 +1,124 @@
+---
+// PortfolioPreview.astro
+// Links directly to Behance profile
+// In Phase 5 we wire the Behance API for live project data
+
+const projects = [
+  {
+    title: "Brand Identity Project",
+    category: "Brand Identity",
+    desc: "Strategic brand development with visual identity systems built for recognition and recall.",
+    color: "#00B4B4",
+  },
+  {
+    title: "Motion Graphics Campaign",
+    category: "Motion & Animation",
+    desc: "Animated visual storytelling that reinforces brand message through movement and flow.",
+    color: "#0A1628",
+  },
+  {
+    title: "Digital Campaign Design",
+    category: "Social Media & Campaigns",
+    desc: "Content systems designed to cut through noise and remain present in the audience's mind.",
+    color: "#007A7A",
+  },
+  {
+    title: "Web Design & Development",
+    category: "Web & Digital",
+    desc: "Digital experiences built for maximum engagement, clarity, and return visits.",
+    color: "#0D2040",
+  },
+  {
+    title: "Event Production",
+    category: "Live Events",
+    desc: "Live experiences designed to extend beyond the moment and continue to resonate.",
+    color: "#00B4B4",
+  },
+  {
+    title: "Visual Content Creation",
+    category: "Photography & Video",
+    desc: "Authentic visual capture that humanises brands and deepens audience connection.",
+    color: "#0A1628",
+  },
+];
+---
+
+<section class="portfolio-section section" id="portfolio">
+  <div class="container">
+
+    <div class="portfolio-header">
+      <div class="portfolio-header-left">
+        <span class="section-tag">Our Work</span>
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">
+          Work that doesn't just get noticed — work that echoes.
+          View our full portfolio on Behance.
+        </p>
+      </div>
+
+      <!-- ✅ FIXED BUTTON -->
+      <a
+        href="https://www.behance.net/thekoggmedia"
+        target="_blank"
+        rel="noopener"
+        class="btn-outline"
+      >
+        View Full Portfolio
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="portfolio-grid">
+      {projects.map((project, i) => (
+        <!-- ✅ FIXED CARD LINK -->
+        <a
+          href="https://www.behance.net/thekoggmedia"
+          target="_blank"
+          rel="noopener"
+          class={`portfolio-card ${i === 0 ? 'portfolio-card--featured' : ''}`}
+        >
+          <div class="portfolio-card-bg" style={`background: ${project.color};`}>
+            <div class="portfolio-bg-pattern"></div>
+            <div class="portfolio-card-overlay"></div>
+          </div>
+
+          <div class="portfolio-card-content">
+            <span class="portfolio-category">{project.category}</span>
+            <h3 class="portfolio-title">{project.title}</h3>
+            <p class="portfolio-desc">{project.desc}</p>
+
+            <div class="portfolio-link">
+              View on Behance
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Behance CTA -->
+    <div class="behance-cta">
+      <div class="behance-cta-inner">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#0057FF">
+          <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.726-3h3.543c-.073-1.77-1.339-2.021-1.8-2.021-.475 0-1.618.27-1.743 2.021zm-10.618 3h-3.38V5h3.916c4.973.173 4.979 6.713 0 7h-.536zm-3.38-3h3.38c2.145 0 2.145-4 0-4h-3.38v4z"/>
+        </svg>
+
+        <div>
+          <p class="behance-cta-title">See all our projects on Behance</p>
+          <p class="behance-cta-sub">behance.net/thekoggmedia</p>
+        </div>
+
+        <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="btn-primary">
+          Open Behance Profile
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

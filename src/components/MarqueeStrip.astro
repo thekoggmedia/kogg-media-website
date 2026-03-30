@@ -1,0 +1,85 @@
+---
+// MarqueeStrip.astro — scrolling brand message ticker
+---
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-content">
+      {Array(3).fill(null).map(() => (
+        <span class="marquee-group">
+          <span class="marquee-item">Brand Identity</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Motion Graphics</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Web Development</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">AI Agents</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Live Events</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Video Production</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Facilitating the Second Hearing</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Photography</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Social Media Campaigns</span>
+          <span class="marquee-dot">◆</span>
+          <span class="marquee-item">Creative Strategy</span>
+          <span class="marquee-dot">◆</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .marquee-section {
+    background: #00B4B4;
+    padding: 0.9rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0,212,212,0.3);
+    border-bottom: 1px solid rgba(0,212,212,0.3);
+  }
+
+  .marquee-track {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: inline-flex;
+    animation: marquee 40s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .marquee-item {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0A1628;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    color: rgba(10,22,40,0.4);
+    font-size: 0.5rem;
+  }
+
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+</style>
