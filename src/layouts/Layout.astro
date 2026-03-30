@@ -19,40 +19,28 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#00B4B4" />
-
-    <!-- Open Graph (for social media sharing) -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-image.jpg" />
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-
-    <!-- Fonts preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <title>{title}</title>
   </head>
 
   <body>
-    <!-- Navigation -->
+
+    <!-- ── NAVBAR ── -->
     <nav id="navbar">
       <div class="nav-container">
-
-        <!-- Logo -->
         <a href="/" class="nav-logo">
           <img src="/logo-light.png" alt="KOGG MEDIA" class="logo-img" />
         </a>
-
-        <!-- Desktop Navigation Links -->
         <ul class="nav-links">
           <li><a href="/" class="nav-link">Home</a></li>
           <li><a href="/services" class="nav-link">Services</a></li>
@@ -61,17 +49,12 @@ const {
           <li><a href="/updates" class="nav-link">Updates</a></li>
           <li><a href="/contact" class="nav-link nav-cta">Get In Touch</a></li>
         </ul>
-
-        <!-- Mobile Hamburger -->
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span></span>
           <span></span>
           <span></span>
         </button>
-
       </div>
-
-      <!-- Mobile Menu -->
       <div class="mobile-menu" id="mobile-menu">
         <ul class="mobile-links">
           <li><a href="/" class="mobile-link">Home</a></li>
@@ -84,16 +67,14 @@ const {
       </div>
     </nav>
 
-    <!-- Page Content -->
+    <!-- ── PAGE CONTENT ── -->
     <main>
       <slot />
     </main>
 
-    <!-- Footer -->
+    <!-- ── FOOTER ── -->
     <footer class="footer">
       <div class="container">
-
-        <!-- Footer Top -->
         <div class="footer-top">
 
           <!-- Brand Column -->
@@ -104,19 +85,46 @@ const {
               A creative-tech agency engineering resonance for brands
               through design, technology, and storytelling.
             </p>
-            <!-- Social Links -->
             <div class="social-links">
-              <a href="#" class="social-link" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+              <a href="https://www.instagram.com/thekoggmedia" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                </svg>
               </a>
-              <a href="#" class="social-link" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <a href="https://www.facebook.com/thekoggmedia" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
               </a>
-              <a href="#" class="social-link" aria-label="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+              <a href="https://www.linkedin.com/company/thekoggmedia" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
               </a>
-              <a href="#" class="social-link" aria-label="Behance">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.726-3h3.543c-.073-1.77-1.339-2.021-1.8-2.021-.475 0-1.618.27-1.743 2.021zm-10.618 3h-3.38V5h3.916c4.973.173 4.979 6.713 0 7h-.536zm-3.38-3h3.38c2.145 0 2.145-4 0-4h-3.38v4z"/></svg>
+              <a href="https://www.youtube.com/@thekoggmedia" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@thekoggmedia" target="_blank" rel="noopener" class="social-link" aria-label="TikTok">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/thekoggmedia" target="_blank" rel="noopener" class="social-link" aria-label="Behance">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.726-3h3.543c-.073-1.77-1.339-2.021-1.8-2.021-.475 0-1.618.27-1.743 2.021zm-10.618 3h-3.38V5h3.916c4.973.173 4.979 6.713 0 7h-.536zm-3.38-3h3.38c2.145 0 2.145-4 0-4h-3.38v4z"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/2348139200352" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -131,18 +139,19 @@ const {
               <li><a href="/services#video">Video Creation & Editing</a></li>
               <li><a href="/services#photography">Photography</a></li>
               <li><a href="/services#events">Live Events & Livestreaming</a></li>
+              <li><a href="/services#social">Social Media Campaigns</a></li>
             </ul>
           </div>
 
-          <!-- More Services Column -->
+          <!-- Company Column -->
           <div class="footer-col">
-            <h4 class="footer-col-title">More</h4>
+            <h4 class="footer-col-title">Company</h4>
             <ul class="footer-links">
-              <li><a href="/services#social">Social Media Campaigns</a></li>
-              <li><a href="/services#web">Web Design & Development</a></li>
+              <li><a href="/services#web">Web Design & Dev</a></li>
               <li><a href="/services#ai">AI Agents & Automation</a></li>
               <li><a href="/services#education">Education & Training</a></li>
               <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/showcase">Showcase</a></li>
               <li><a href="/updates">Updates</a></li>
             </ul>
           </div>
@@ -152,12 +161,28 @@ const {
             <h4 class="footer-col-title">Contact</h4>
             <ul class="footer-links">
               <li><a href="/contact">Get In Touch</a></li>
-              <li><a href="mailto:hello@koggemedia.com">hello@koggemedia.com</a></li>
+              <li><a href="mailto:thekoggmedia@gmail.com">thekoggmedia@gmail.com</a></li>
+              <li><a href="https://wa.me/2348139200352" target="_blank">WhatsApp Us</a></li>
+              <li><a href="https://wa.me/c/2348139200352" target="_blank">WhatsApp Catalogue</a></li>
             </ul>
+            <div class="footer-newsletter">
+              <p class="newsletter-label">Get updates in your inbox</p>
+              <form class="newsletter-form" id="newsletter-form">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  class="newsletter-input"
+                  id="newsletter-email"
+                  required
+                />
+                <button type="submit" class="newsletter-btn">→</button>
+              </form>
+              <p class="newsletter-msg" id="newsletter-msg"></p>
+            </div>
             <div class="footer-tagline-box">
               <span class="teal-line"></span>
               <p class="philosophy-text">
-                "Beyond the first perception — into lasting resonance."
+                "Beyond the first perception —<br/>into lasting resonance."
               </p>
             </div>
           </div>
@@ -171,23 +196,17 @@ const {
           </p>
           <p class="footer-hash">#Facilitating_the_Second_Hearing</p>
         </div>
-
       </div>
     </footer>
 
   </body>
 </html>
 
-<!-- ══════════════════════════════════
-     NAVBAR & FOOTER STYLES
-══════════════════════════════════ -->
 <style>
   /* ── NAVBAR ── */
   #navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 1000;
     background: rgba(10, 22, 40, 0.95);
     backdrop-filter: blur(12px);
@@ -198,8 +217,8 @@ const {
 
   #navbar.scrolled {
     background: rgba(10, 22, 40, 0.99);
-    border-bottom-color: rgba(0, 180, 180, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom-color: rgba(0, 180, 180, 0.35);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
   }
 
   .nav-container {
@@ -212,17 +231,9 @@ const {
     justify-content: space-between;
   }
 
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
 
-  .logo-img {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
-  }
+  .logo-img { height: 38px; width: auto; object-fit: contain; }
 
   .nav-links {
     display: flex;
@@ -240,31 +251,28 @@ const {
     padding: 0.5rem 0.9rem;
     border-radius: 4px;
     transition: all 0.3s ease;
-    letter-spacing: 0.01em;
   }
 
   .nav-link:hover {
     color: #00B4B4;
-    background: rgba(0, 180, 180, 0.08);
+    background: rgba(0,180,180,0.08);
   }
 
   .nav-cta {
-    background: #00B4B4;
+    background: #00B4B4 !important;
     color: #ffffff !important;
-    padding: 0.5rem 1.25rem;
-    border-radius: 4px;
-    font-weight: 600;
+    padding: 0.5rem 1.25rem !important;
+    font-weight: 600 !important;
     margin-left: 0.5rem;
   }
 
   .nav-cta:hover {
     background: transparent !important;
     color: #00B4B4 !important;
-    border: 1px solid #00B4B4;
-    box-shadow: 0 0 20px rgba(0, 180, 180, 0.3);
+    outline: 1px solid #00B4B4;
+    box-shadow: 0 0 20px rgba(0,180,180,0.3);
   }
 
-  /* ── HAMBURGER ── */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -279,32 +287,23 @@ const {
     display: block;
     width: 24px;
     height: 2px;
-    background: #ffffff;
+    background: #fff;
     border-radius: 2px;
     transition: all 0.3s ease;
   }
 
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-  /* ── MOBILE MENU ── */
   .mobile-menu {
     display: none;
-    background: rgba(10, 22, 40, 0.98);
-    border-top: 1px solid rgba(0, 180, 180, 0.15);
+    background: rgba(10,22,40,0.98);
+    border-top: 1px solid rgba(0,180,180,0.15);
     padding: 1rem 1.5rem 2rem;
   }
 
-  .mobile-menu.open {
-    display: block;
-  }
+  .mobile-menu.open { display: block; }
 
   .mobile-links {
     list-style: none;
@@ -321,13 +320,11 @@ const {
     color: rgba(255,255,255,0.85);
     text-decoration: none;
     padding: 0.75rem 0.5rem;
-    border-bottom: 1px solid rgba(0, 180, 180, 0.1);
+    border-bottom: 1px solid rgba(0,180,180,0.1);
     transition: color 0.3s ease;
   }
 
-  .mobile-link:hover {
-    color: #00B4B4;
-  }
+  .mobile-link:hover { color: #00B4B4; }
 
   /* ── FOOTER ── */
   .footer {
@@ -335,53 +332,45 @@ const {
     color: rgba(255,255,255,0.7);
     padding: 5rem 0 0;
     margin-top: 5rem;
-    border-top: 1px solid rgba(0, 180, 180, 0.2);
+    border-top: 1px solid rgba(0,180,180,0.2);
   }
 
   .footer-top {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.4fr;
     gap: 3rem;
     margin-bottom: 4rem;
   }
 
-  .footer-logo {
-    height: 36px;
-    width: auto;
-    margin-bottom: 1rem;
-    filter: brightness(1);
-  }
+  .footer-logo { height: 36px; width: auto; margin-bottom: 1rem; }
 
   .footer-tagline {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: #00B4B4;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 0.75rem;
   }
 
   .footer-desc {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.5);
     line-height: 1.7;
     margin-bottom: 1.5rem;
   }
 
-  .social-links {
-    display: flex;
-    gap: 0.75rem;
-  }
+  .social-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
   .social-link {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 180, 180, 0.1);
-    border: 1px solid rgba(0, 180, 180, 0.2);
+    background: rgba(0,180,180,0.08);
+    border: 1px solid rgba(0,180,180,0.2);
     border-radius: 4px;
     color: rgba(255,255,255,0.7);
     text-decoration: none;
@@ -391,15 +380,15 @@ const {
   .social-link:hover {
     background: #00B4B4;
     border-color: #00B4B4;
-    color: #ffffff;
+    color: #fff;
     transform: translateY(-3px);
   }
 
   .footer-col-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #fff;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
@@ -413,26 +402,84 @@ const {
   }
 
   .footer-links a {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
-  .footer-links a:hover {
-    color: #00B4B4;
+  .footer-links a:hover { color: #00B4B4; }
+
+  /* ── NEWSLETTER ── */
+  .footer-newsletter {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
+  .newsletter-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(0,180,180,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 0.6rem 0.85rem;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+  }
+
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .newsletter-input:focus {
+    background: rgba(0,180,180,0.08);
+  }
+
+  .newsletter-btn {
+    padding: 0.6rem 1rem;
+    background: #00B4B4;
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .newsletter-btn:hover { background: #00D4D4; }
+
+  .newsletter-msg {
+    font-size: 0.78rem;
+    color: #00B4B4;
+    margin-top: 0.4rem;
+    min-height: 1rem;
+  }
+
+  /* ── FOOTER TAGLINE BOX ── */
   .footer-tagline-box {
-    margin-top: 1.5rem;
     padding: 1rem;
-    background: rgba(0, 180, 180, 0.05);
+    background: rgba(0,180,180,0.05);
     border-left: 3px solid #00B4B4;
   }
 
   .philosophy-text {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
     font-style: italic;
     line-height: 1.6;
   }
@@ -447,7 +494,7 @@ const {
 
   .footer-copy {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
   }
 
   .footer-hash {
@@ -475,11 +522,8 @@ const {
   }
 </style>
 
-<!-- ══════════════════════════════════
-     NAVBAR SCROLL & MOBILE MENU JS
-══════════════════════════════════ -->
 <script>
-  // Scroll effect on navbar
+  // Navbar scroll effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -489,20 +533,33 @@ const {
     }
   });
 
-  // Mobile menu toggle
+  // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
-
   hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     mobileMenu?.classList.toggle('open');
   });
-
-  // Close mobile menu when a link is clicked
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       hamburger?.classList.remove('active');
       mobileMenu?.classList.remove('open');
     });
+  });
+
+  // Newsletter form — stores to localStorage for now
+  // In Phase 5 we wire this to Cloudflare D1 database
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterMsg = document.getElementById('newsletter-msg');
+  newsletterForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = (document.getElementById('newsletter-email') as HTMLInputElement)?.value;
+    if (!email) return;
+    newsletterMsg!.textContent = 'Subscribing...';
+    // Phase 5: replace this with actual API call to Cloudflare Worker
+    setTimeout(() => {
+      newsletterMsg!.textContent = '✓ You\'re subscribed. Welcome to the echo.';
+      (document.getElementById('newsletter-email') as HTMLInputElement).value = '';
+    }, 800);
   });
 </script>
