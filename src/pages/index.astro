@@ -1,17 +1,63 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="KOGG MEDIA — Facilitating the Second Hearing">
+
+  <!-- HERO PLACEHOLDER — we build this fully in Phase 3 -->
+  <section style="
+    min-height: 100vh;
+    background: #0A1628;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    padding-top: 72px;
+  ">
+    <p style="
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #00B4B4;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    ">
+      Facilitating the Second Hearing
+    </p>
+
+    <h1 style="
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    ">
+      KOGG<br/>
+      <span style="color: #00B4B4;">MEDIA</span>
+    </h1>
+
+    <p style="
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    ">
+      A creative-tech agency engineering resonance for brands
+      through design, technology, and storytelling.
+    </p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+      <a href="/services" class="btn-primary">View Services</a>
+      <a href="/portfolio" class="btn-secondary">See Our Work</a>
+    </div>
+  </section>
+
+</Layout>
+```

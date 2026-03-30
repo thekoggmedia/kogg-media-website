@@ -1,0 +1,329 @@
+/* ═══════════════════════════════════════════
+   KOGG MEDIA — GLOBAL BRAND STYLES
+   Facilitating the Second Hearing
+═══════════════════════════════════════════ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── CSS BRAND VARIABLES ── */
+:root {
+  /* Core Brand Colors */
+  --teal:        #00B4B4;
+  --teal-bright: #00D4D4;
+  --teal-dark:   #007A7A;
+  --teal-light:  #EBF7F7;
+  --navy:        #0A1628;
+  --navy-mid:    #0D2040;
+  --black:       #0A0A0A;
+  --white:       #FFFFFF;
+  --off-white:   #F8FAFB;
+  --gray-light:  #E2E8F0;
+  --gray-mid:    #4A5568;
+  --cyan:        #00AACC;
+
+  /* Typography */
+  --font-brand: 'Space Grotesk', sans-serif;
+  --font-body:  'Inter', sans-serif;
+
+  /* Spacing */
+  --section-padding: 5rem 1.5rem;
+  --container-max:   1200px;
+
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── BASE RESET ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--black);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+
+p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--gray-mid);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--teal-bright);
+}
+
+/* ── SELECTION COLOR ── */
+::selection {
+  background: var(--teal);
+  color: var(--white);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal-bright); }
+
+/* ── UTILITY CLASSES ── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: var(--section-padding);
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--cyan) 50%, var(--teal-bright) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.teal-line {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--teal);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--teal);
+  color: var(--white);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 180, 180, 0.3);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid var(--white);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: var(--teal);
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-outline:hover {
+  background: var(--teal);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* ── SECTION HEADINGS ── */
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--gray-mid);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.card:hover {
+  border-color: var(--teal);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 180, 180, 0.1);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-teal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 180, 180, 0.4); }
+  50%       { box-shadow: 0 0 0 15px rgba(0, 180, 180, 0); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* ── TEAL GLOW EFFECT ── */
+.teal-glow {
+  box-shadow: 0 0 30px rgba(0, 180, 180, 0.2),
+              0 0 60px rgba(0, 180, 180, 0.1);
+}
+
+/* ── DARK SECTION ── */
+.dark-section {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4 {
+  color: var(--white);
+}
+
+.dark-section p {
+  color: var(--gray-light);
+}
