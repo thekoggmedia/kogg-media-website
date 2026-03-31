@@ -1,0 +1,22 @@
+{
+  "videos": [
+    {
+      "id": "VIDEO_ID_1",
+      "title": "KOGG MEDIA Brand Showreel",
+      "category": "Showreel",
+      "featured": true
+    },
+    {
+      "id": "VIDEO_ID_2",
+      "title": "Creative Campaign Breakdown",
+      "category": "Behind the Scenes",
+      "featured": false
+    },
+    {
+      "id": "VIDEO_ID_3",
+      "title": "Motion Graphics Reel",
+      "category": "Motion Design",
+      "featured": false
+    }
+  ]
+}

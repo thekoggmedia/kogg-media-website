@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-
+import AIAssistant from '../components/AIAssistant.astro';
 interface Props {
   title?: string;
   description?: string;
@@ -198,7 +198,7 @@ const {
         </div>
       </div>
     </footer>
-
+<AIAssistant />
   </body>
 </html>
 
@@ -557,9 +557,17 @@ const {
     if (!email) return;
     newsletterMsg!.textContent = 'Subscribing...';
     // Phase 5: replace this with actual API call to Cloudflare Worker
-    setTimeout(() => {
-      newsletterMsg!.textContent = '✓ You\'re subscribed. Welcome to the echo.';
-      (document.getElementById('newsletter-email') as HTMLInputElement).value = '';
-    }, 800);
+   const res = await fetch('https://kogg-media-ai.thekoggmedia.workers.dev/newsletter', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email }),
+});
+const result = await res.json();
+if (result.success) {
+  newsletterMsg!.textContent = '✓ Subscribed. Welcome to the echo.';
+  (document.getElementById('newsletter-email') as HTMLInputElement).value = '';
+} else {
+  newsletterMsg!.textContent = 'Something went wrong. Try again.';
+}
   });
 </script>

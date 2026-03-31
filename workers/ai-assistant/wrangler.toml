@@ -1,0 +1,11 @@
+name = "kogg-media-ai"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[ai]
+binding = "AI"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kogg-media-db"
+database_id = "458d77f6-569d-49b6-8db3-399e4c2c2778"

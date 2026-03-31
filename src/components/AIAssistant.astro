@@ -1,0 +1,543 @@
+---
+// AIAssistant.astro
+// The Second Hearing AI Brand Assistant
+// Powered by Cloudflare Workers AI
+const WORKER_URL = "https://kogg-media-ai.thekoggmedia.workers.dev";
+---
+
+<!-- Floating Chat Button -->
+<div class="ai-widget" id="ai-widget">
+
+  <!-- Toggle Button -->
+  <button class="ai-toggle" id="ai-toggle" aria-label="Open AI Assistant">
+    <div class="ai-toggle-closed" id="ai-icon-closed">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </div>
+    <div class="ai-toggle-open" id="ai-icon-open" style="display:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </div>
+    <span class="ai-toggle-label">Ask KOGG AI</span>
+  </button>
+
+  <!-- Chat Panel -->
+  <div class="ai-panel" id="ai-panel">
+
+    <!-- Header -->
+    <div class="ai-header">
+      <div class="ai-header-left">
+        <div class="ai-avatar">
+          <img src="/favicon.png" alt="KOGG AI" />
+        </div>
+        <div>
+          <p class="ai-header-name">KOGG AI Assistant</p>
+          <p class="ai-header-status">
+            <span class="ai-status-dot"></span>
+            Facilitating the Second Hearing
+          </p>
+        </div>
+      </div>
+      <button class="ai-close" id="ai-close" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div class="ai-messages" id="ai-messages">
+      <div class="ai-message ai-message--bot">
+        <div class="ai-bubble">
+          👋 Hi! I'm the KOGG MEDIA AI Assistant. I can help you understand our services, packages, and philosophy.<br/><br/>
+          What would you like to know about <strong>Facilitating the Second Hearing</strong>?
+        </div>
+      </div>
+
+      <!-- Quick prompts -->
+      <div class="ai-quick-prompts" id="ai-quick-prompts">
+        <p class="ai-quick-label">Quick questions:</p>
+        <button class="ai-quick-btn" data-prompt="What services does KOGG MEDIA offer?">Our Services</button>
+        <button class="ai-quick-btn" data-prompt="What are your packages and pricing?">Packages</button>
+        <button class="ai-quick-btn" data-prompt="What is the Second Hearing philosophy?">Our Philosophy</button>
+        <button class="ai-quick-btn" data-prompt="How do I get started with a project?">Get Started</button>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="ai-input-area">
+      <div class="ai-input-row">
+        <textarea
+          class="ai-input"
+          id="ai-input"
+          placeholder="Ask about our services, philosophy, or getting started..."
+          rows="1"
+        ></textarea>
+        <button class="ai-send" id="ai-send" aria-label="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+      <p class="ai-footer-note">
+        Powered by KOGG MEDIA ·
+        <a href="/contact" style="color:#00B4B4;">Contact us directly</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+  /* ── WIDGET CONTAINER ── */
+  .ai-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── TOGGLE BUTTON ── */
+  .ai-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.25rem;
+    background: #00B4B4;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    box-shadow: 0 8px 30px rgba(0,180,180,0.4);
+    transition: all 0.3s ease;
+    animation: pulse-teal 3s infinite;
+  }
+
+  .ai-toggle:hover {
+    background: #007A7A;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,180,180,0.5);
+  }
+
+  @keyframes pulse-teal {
+    0%, 100% { box-shadow: 0 8px 30px rgba(0,180,180,0.4); }
+    50%       { box-shadow: 0 8px 40px rgba(0,180,180,0.7); }
+  }
+
+  /* ── CHAT PANEL ── */
+  .ai-panel {
+    width: 380px;
+    height: 520px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,180,180,0.2);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,180,180,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    transform: scale(0.8) translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .ai-panel.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ── HEADER ── */
+  .ai-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: #0A1628;
+    border-bottom: 1px solid rgba(0,180,180,0.2);
+  }
+
+  .ai-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ai-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0,180,180,0.2);
+    border: 2px solid #00B4B4;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ai-header-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .ai-header-status {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .ai-status-dot {
+    width: 6px;
+    height: 6px;
+    background: #00B4B4;
+    border-radius: 50%;
+    animation: statusPulse 2s infinite;
+  }
+
+  @keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+
+  .ai-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s ease;
+    display: flex;
+  }
+
+  .ai-close:hover { color: #ffffff; }
+
+  /* ── MESSAGES ── */
+  .ai-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    scroll-behavior: smooth;
+  }
+
+  .ai-messages::-webkit-scrollbar { width: 4px; }
+  .ai-messages::-webkit-scrollbar-track { background: transparent; }
+  .ai-messages::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 2px; }
+
+  .ai-message { display: flex; gap: 0.5rem; }
+
+  .ai-message--user {
+    flex-direction: row-reverse;
+  }
+
+  .ai-bubble {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.87rem;
+    line-height: 1.6;
+  }
+
+  .ai-message--bot .ai-bubble {
+    background: #F8FAFB;
+    border: 1px solid #E2E8F0;
+    color: #0A1628;
+    border-radius: 4px 12px 12px 12px;
+  }
+
+  .ai-message--user .ai-bubble {
+    background: #00B4B4;
+    color: #ffffff;
+    border-radius: 12px 4px 12px 12px;
+  }
+
+  .ai-message--typing .ai-bubble {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .ai-typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #94A3B8;
+    border-radius: 50%;
+    animation: typingBounce 1.2s infinite;
+  }
+
+  .ai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .ai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typingBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-4px); }
+  }
+
+  /* ── QUICK PROMPTS ── */
+  .ai-quick-prompts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .ai-quick-label {
+    font-size: 0.7rem;
+    color: #94A3B8;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.25rem;
+  }
+
+  .ai-quick-btn {
+    text-align: left;
+    padding: 0.5rem 0.85rem;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #0A1628;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .ai-quick-btn:hover {
+    border-color: #00B4B4;
+    color: #00B4B4;
+    background: rgba(0,180,180,0.04);
+  }
+
+  /* ── INPUT AREA ── */
+  .ai-input-area {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #E2E8F0;
+    background: #ffffff;
+  }
+
+  .ai-input-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    background: #F8FAFB;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-input-row:focus-within { border-color: #00B4B4; background: #ffffff; }
+
+  .ai-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    resize: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: #0A1628;
+    outline: none;
+    max-height: 100px;
+    line-height: 1.5;
+  }
+
+  .ai-input::placeholder { color: #94A3B8; }
+
+  .ai-send {
+    width: 34px;
+    height: 34px;
+    background: #00B4B4;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+  }
+
+  .ai-send:hover { background: #007A7A; }
+  .ai-send:disabled { background: #CBD5E0; cursor: not-allowed; }
+
+  .ai-footer-note {
+    font-size: 0.68rem;
+    color: #94A3B8;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .ai-widget { bottom: 1rem; right: 1rem; }
+    .ai-panel { width: calc(100vw - 2rem); height: 70vh; }
+    .ai-toggle-label { display: none; }
+  }
+</style>
+
+<script define:vars={{ WORKER_URL }}>
+  const panel = document.getElementById('ai-panel');
+  const toggle = document.getElementById('ai-toggle');
+  const closeBtn = document.getElementById('ai-close');
+  const input = document.getElementById('ai-input');
+  const sendBtn = document.getElementById('ai-send');
+  const messages = document.getElementById('ai-messages');
+  const iconClosed = document.getElementById('ai-icon-closed');
+  const iconOpen = document.getElementById('ai-icon-open');
+  const quickPrompts = document.getElementById('ai-quick-prompts');
+
+  let isOpen = false;
+  let isLoading = false;
+  let chatHistory = [];
+
+  function togglePanel() {
+    isOpen = !isOpen;
+    panel.classList.toggle('open', isOpen);
+    iconClosed.style.display = isOpen ? 'none' : 'flex';
+    iconOpen.style.display = isOpen ? 'flex' : 'none';
+  }
+
+  toggle.addEventListener('click', togglePanel);
+  closeBtn.addEventListener('click', togglePanel);
+
+  function scrollToBottom() {
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function addMessage(text, role) {
+    const msgEl = document.createElement('div');
+    msgEl.className = `ai-message ai-message--${role}`;
+
+    const bubble = document.createElement('div');
+    bubble.className = 'ai-bubble';
+    bubble.innerHTML = text.replace(/\n/g, '<br/>');
+
+    msgEl.appendChild(bubble);
+    messages.appendChild(msgEl);
+    scrollToBottom();
+    return msgEl;
+  }
+
+  function showTyping() {
+    const msgEl = document.createElement('div');
+    msgEl.className = 'ai-message ai-message--bot ai-message--typing';
+    msgEl.id = 'ai-typing';
+    msgEl.innerHTML = `
+      <div class="ai-bubble">
+        <div class="ai-typing-dot"></div>
+        <div class="ai-typing-dot"></div>
+        <div class="ai-typing-dot"></div>
+      </div>`;
+    messages.appendChild(msgEl);
+    scrollToBottom();
+  }
+
+  function removeTyping() {
+    document.getElementById('ai-typing')?.remove();
+  }
+
+  async function sendMessage(text) {
+    if (!text.trim() || isLoading) return;
+
+    isLoading = true;
+    sendBtn.disabled = true;
+
+    // Hide quick prompts after first message
+    if (quickPrompts) quickPrompts.style.display = 'none';
+
+    // Add user message
+    addMessage(text, 'user');
+    chatHistory.push({ role: 'user', content: text });
+
+    input.value = '';
+    input.style.height = 'auto';
+
+    showTyping();
+
+    try {
+      const res = await fetch(`${WORKER_URL}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: chatHistory.slice(-6),
+        }),
+      });
+
+      const data = await res.json();
+      removeTyping();
+
+      const reply = data.reply || "I'm having a moment — please contact KOGG MEDIA at thekoggmedia@gmail.com";
+      addMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+
+    } catch (err) {
+      removeTyping();
+      addMessage("Connection issue — please try again or contact KOGG MEDIA directly at thekoggmedia@gmail.com or WhatsApp +2348139200352.", 'bot');
+    }
+
+    isLoading = false;
+    sendBtn.disabled = false;
+    input.focus();
+  }
+
+  // Send on button click
+  sendBtn.addEventListener('click', () => {
+    sendMessage(input.value.trim());
+  });
+
+  // Send on Enter (not Shift+Enter)
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(input.value.trim());
+    }
+  });
+
+  // Auto-resize textarea
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+  });
+
+  // Quick prompt buttons
+  document.querySelectorAll('.ai-quick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const prompt = btn.getAttribute('data-prompt');
+      sendMessage(prompt);
+    });
+  });
+</script>
